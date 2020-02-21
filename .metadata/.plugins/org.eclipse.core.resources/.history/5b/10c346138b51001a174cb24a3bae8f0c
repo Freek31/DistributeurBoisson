@@ -1,0 +1,37 @@
+/**
+ * 
+ */
+package model;
+
+import java.util.Observable;
+
+/**
+ * | @Author : @Fred || 17 févr. 2020 || 11:35:41 | *
+ *
+ */
+
+public class MonModel extends Observable {
+	public MonModel() {
+		
+	}
+
+	
+	
+	
+	private void notifierLesChangements() {
+		// j'ai fait un traitement, des modifs -> je dois prevenir ceux qui me regardent
+		setChanged();
+		notifyObservers();
+	}
+	
+	// METHODES METIER
+	public int() {
+	
+	}
+	
+	public void TraitementBB() {
+		setMessage(this.messageBoutonB);
+		notifierLesChangements();
+		System.out.println("BB");
+	}
+}

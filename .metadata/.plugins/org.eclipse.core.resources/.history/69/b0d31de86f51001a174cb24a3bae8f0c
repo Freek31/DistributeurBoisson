@@ -1,0 +1,91 @@
+/**
+ * 
+ */
+package views;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.util.Observer;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+/**
+ * | @Author : @Fred || 17 févr. 2020 || 09:23:24 | *
+ *
+ */
+public class View extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private static String nomBtn = "";
+	private JButton button;
+	private JLabel etiquetteDeDonnee;
+	private JButton[] buttons;
+
+	public View(String[] tabNomsBoisson) {
+		super();
+
+		
+		
+		//on veut afficher un bouton par produit coreespondant
+		//this.button = new JButton(nomBtn);
+		// this.button.setActionCommand("TOTO");
+		ButtonGroup groupe = new ButtonGroup();
+		buttons = new JButton[tabNomsBoisson.length];
+		for (int i = 0; i <buttons.length; i++) {
+		    buttons[i] = new JButton(tabNomsBoisson[i]);
+		}
+		
+		//JPanel panel = new JPanel(new GridLayout(5,1));
+		//Border border = BorderFactory.createTitledBorder("Sélection de boisson");
+		//panel.setBorder(border);
+		Container contenu= getContentPane(); // on cree un objet de tupe container qui prend l'adresse du panneau,
+		contenu.setBackground(Color.GREEN); // /!\ en modifiant contenue on modifie également lobjet jframe
+											// correspondant : on a objet1 =objet2;
+		contenu.setLayout(new FlowLayout()); // container est une collection
+		
+		// JPanel b1 = new JPanel();
+		    //On définit le layout en lui indiquant qu'il travaillera en ligne
+		  //  b1.setLayout(new BoxLayout(b1, BoxLayout.LINE_AXIS));
+		//etiquetteDeDonnee = new JLabel("ici étiquette de donnée", SwingConstants.CENTER);
+		//b1.add(etiquetteDeDonnee);
+		for (int i = 0; i <buttons.length; i++) {
+		groupe.add(buttons[i]);
+		contenu.add(buttons[i]);
+		}
+		
+		//contenu.add(panel, BorderLayout.CENTER);
+		setSize(400, 200);
+		setVisible(true);
+	}
+
+	/**
+	 * @return the nomBtn
+	 */
+	public static String getNomBtn() {
+		return nomBtn;
+	}
+
+	/**
+	 * @param nomBtn the nomBtn to set
+	 */
+	public static void setNomBtn(String pNomBtn) {
+		nomBtn = pNomBtn;
+	}
+
+}

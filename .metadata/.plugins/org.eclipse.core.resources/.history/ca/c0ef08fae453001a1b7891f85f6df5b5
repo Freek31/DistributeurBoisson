@@ -1,0 +1,67 @@
+/**
+ * 
+ */
+package model;
+
+/**
+ * | @Author : @Fred || 20 févr. 2020 || 14:10:15 | *
+ *
+ */
+public enum Pieces {
+	P10("Piece(s) de 0.10€"	, 10	,"P10"),
+	P20("Piece(s) de 0.20€"	, 20	,"P20"),
+	P50("Piece(s) de 0.50€"	, 50	,"P50"),
+	P100("Piece(s) de 1€"	, 100   ,"P100"),
+	P200("Piece(s) de 2€"	, 200   ,"P200");
+	
+	/*****Propriétés*****/
+	private final String    id;
+	private final String 	nom;
+	private final int	    valeur;
+	private final String 	quantite;
+	
+	/*****Constructeur*****/
+	/**
+	 * @param nom
+	 * @param valeur
+	 */
+	private Pieces(String pId, String pNom, short pValeur, String tp) {
+		this.id         = pId;
+		this.nom 		= pNom;
+		this.valeur 	= pValeur;
+		this.quantite 	= tp;
+	}
+	
+	/*****Accesseurs*****/
+	/**
+	 * @return the nom
+	 */
+	public String getNom() {
+		return nom;
+	}
+
+	/**
+	 * @return the valeur
+	 */
+	public short getValeur() {
+		return valeur;
+	}
+	
+	/**
+	 * @return the typePiece
+	 */
+	public String getQuantite() {
+		return quantite;
+	}
+
+	/*****Méthodes*****/
+	public static String[] listPiece()
+	{
+		String[] tableau = new String[Pieces.values().length];
+		for(byte i = 0 ; i < tableau.length ; i++)
+		{
+			tableau[i] = Pieces.values()[i].getNom();
+		}
+		return tableau;
+	}	
+}

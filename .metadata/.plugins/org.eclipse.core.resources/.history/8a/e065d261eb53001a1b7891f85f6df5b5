@@ -1,0 +1,40 @@
+/**
+ * 
+ */
+package controler;
+
+import java.awt.event.ActionListener;
+
+import model.Model;
+
+import java.awt.event.ActionEvent;
+
+/**
+ * | @Author : @Fred || 20 févr. 2020 || 08:08:51 | *
+ *
+ */
+public class MonControleur implements ActionListener {
+	private Model modele;
+
+	/**
+	 * @param modele
+	 */
+	public MonControleur(Model modele) {
+		super();
+		this.modele = modele;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		System.out.println("je reponds à la sonnette");
+
+		// On veut separer 2 cas : les evenements boutons boisson 'B*'/boutons pieces
+		// 'P*'
+		if (modele.getIdChar(e.getActionCommand()) == 'B') {
+			System.out.println("cest une boisson!");
+		} else {
+			System.out.println("c'est une piece!");
+		}
+
+	}
+}

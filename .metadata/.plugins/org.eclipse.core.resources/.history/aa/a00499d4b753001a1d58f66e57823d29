@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+package model;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * | @Author : @Fred || 20 févr. 2020 || 08:16:12 | *
+ *
+ */
+public class Monayeur extends Stocker {
+	protected Map<Integer, Piece> stock = new HashMap<Integer, Piece>();  // Mon stock de pieces
+	
+	
+}

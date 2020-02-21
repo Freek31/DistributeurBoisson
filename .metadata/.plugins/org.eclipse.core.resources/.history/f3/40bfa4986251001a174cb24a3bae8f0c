@@ -1,0 +1,42 @@
+package controller;
+
+
+import model.Menu;
+import model.Produit;
+import model.StockProduits;
+import views.View;
+
+
+
+/**
+ * | @Author : @Fred || 12 févr. 2020 || 14:44:23 | *
+ *
+ */
+public class LanceurProduit {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		StockProduits monStock = new StockProduits();
+		monStock.addNewProduit(new Produit(1,"Coca",60, 6));
+		monStock.addNewProduit(new Produit(2,"Canada dry",100, 2));
+		monStock.addNewProduit(new Produit(3,"Sprite",50, 4));
+		
+	
+	//	System.out.println(monStock.getBoissonById(2).getProd().getNom());
+		
+		System.out.println(monStock.getBoissonById(1).getStock());
+		
+		Menu monMenu = new Menu("Liste boisson :", monStock.getArrayProduit() );
+		monMenu.afficherMenu();
+		
+		get
+		View f = new View();
+		f.setVisible(true);	
+	
+	}
+
+}

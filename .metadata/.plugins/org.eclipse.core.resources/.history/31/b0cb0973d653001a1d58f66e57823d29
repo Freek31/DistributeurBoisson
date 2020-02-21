@@ -1,0 +1,136 @@
+/**
+ * 
+ */
+package view;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
+import java.util.Map.Entry;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+
+import model.Model;
+import model.Piece;
+import model.Produit;
+import model.Stocker;
+
+/**
+ * | @Author : @Fred || 19 févr. 2020 || 14:55:17 | *
+ *
+ */
+public class View extends JFrame implements Observer {
+	// CONSTANTES
+
+		// ATTRIBUTS
+		private static final long serialVersionUID = 1L;
+
+		private JButton[] buttons, buttons2;
+
+		// Controleur associé
+		// private ActionListener al;
+
+		// BANDEAU
+		private JPanel bandeauHaut = new JPanel();
+		private JTextField msgBandeauHaut = new JTextField("Distributeur Automatique de boissons");;
+
+		// SELECTEUR DE BOISSONS
+		private JPanel panelSelBoissons = new JPanel();
+
+		// MONNAYEUR
+		private JPanel panelMonnayeur = new JPanel();
+		private JTextField txtVeuillezInsrerArgent;
+
+		// BANDEAU MESSAGE BAS
+		private JPanel panelBandeauBasMsg = new JPanel();
+		private JTextField messageBandeauBas = new JTextField("ici je vous dirai quand ça m ira pas");
+
+		
+		
+		public View(Stocker<Produit> rack) {
+			super();
+
+			Container contenu = getContentPane();
+			setSize(400, 400);
+			// BANDEAU
+			contenu.add(this.bandeauHaut, BorderLayout.NORTH);
+			this.bandeauHaut.add(msgBandeauHaut);
+
+			// SELECTEUR DE BOISSONS
+			contenu.add(this.panelSelBoissons, BorderLayout.CENTER);
+			panelSelBoissons.setLayout(new GridLayout(0, 2));
+			
+			//On veut creer un bouton pour chaque boisson
+			int i=0;
+			for (Entry<String, String> p : (rack.getHashmapT()).entrySet()) { 
+				this.buttons[i] = new JButton(p.getValue());
+				System.out.print(p.getValue());
+				this.buttons[i].setActionCommand(p.getKey());
+				panelSelBoissons.add(buttons[i]);
+				i++;
+			}
+
+			
+
+			// MONAYEUR
+			this.panelBandeauBasMsg.add(messageBandeauBas);
+			contenu.add(this.panelMonnayeur, BorderLayout.EAST);
+
+			// PANNEAU PIECES INSEREES
+			this.panelMonnayeur.setLayout(new BorderLayout());// on cree un nouveau layout pour la partie pieces
+
+			txtVeuillezInsrerArgent = new JTextField();
+			txtVeuillezInsrerArgent.setText("Veuillez ins\u00E9rer ARGENT");
+			txtVeuillezInsrerArgent.setBackground(Color.BLACK);
+			txtVeuillezInsrerArgent.setForeground(Color.GREEN);
+			txtVeuillezInsrerArgent.setHorizontalAlignment(JTextField.RIGHT);
+			this.panelMonnayeur.add(txtVeuillezInsrerArgent, BorderLayout.NORTH);
+
+			// PANNEAU BOUTONS TYPE DE PIECES
+			/*JPanel panel2 = new JPanel();
+			buttons2 = new JButton[Piece.values().length];
+			this.panelMonnayeur.add(panel2, BorderLayout.CENTER);
+			panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
+			int i=0;
+			for (Pieces p : Pieces.values()) {
+				this.buttons2[i]= new JButton(p.getNom());
+				this.buttons2[i].setActionCommand(p.getTypePiece());
+				panel2.add(buttons2[i]);
+				i++;
+			}*/
+
+			// BANDEAU BAS
+			contenu.add(this.panelBandeauBasMsg, BorderLayout.SOUTH);
+			this.panelBandeauBasMsg.add(messageBandeauBas);
+
+		}
+
+		public void afficher() {
+			setVisible(true);
+		}
+
+		@Override
+		public void update(Observable o, Object arg) {
+			// Afficher le montant total inséré
+			this.txtVeuillezInsrerArgent.setText(((Model) o).getMontantInsere() / 100f + " €");
+		}
+
+		public void setListener(ActionListener al) {
+			for (int i = 0; i < buttons.length; i++) {
+				buttons[i].addActionListener(al);
+				
+			}
+			for (int i = 0; i < buttons2.length; i++) {
+				buttons2[i].addActionListener(al);
+				
+			}
+		}
+}

@@ -1,0 +1,28 @@
+package model;
+/**
+ * | @Author : @Fred || 10 févr. 2020 || 11:36:52 | *
+ */
+public enum Pieces {
+	VALEURPIECES01((short) 10), 
+	VALEURPIECES02((short) 20), 
+	VALEURPIECES03((short) 50), 
+	VALEURPIECES04((short) 100),
+	VALEURPIECES05((short) 200);
+
+	private final short valeurpiece;
+
+	private Pieces(short valeurpiece) {
+		this.valeurpiece = valeurpiece;
+	}
+	
+	/**
+	 * @return the valeurpiece1
+	 */
+	public short getValeurPiece() {
+		return this.valeurpiece;
+	}
+
+	public static void main(String[] args) {
+		
+	}
+}

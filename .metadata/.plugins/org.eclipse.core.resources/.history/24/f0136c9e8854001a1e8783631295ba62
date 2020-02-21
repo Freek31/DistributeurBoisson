@@ -1,0 +1,84 @@
+/**
+ * 
+ */
+package model;
+
+import java.util.Observable;
+
+/**
+ * | @Author : @Fred || 20 févr. 2020 || 09:21:30 | *
+ *
+ */
+public class Distributeur extends Observable {
+	//ATTRIBUTS
+	private int montantInsere = 0;
+	private Monayeur monMonnayeur;
+	private Stocker<Produit> rack;
+	private String boissonSelectionnee;
+	private String choix;
+	
+
+	//CONSTRUCTEUR
+	public Distributeur(Stocker<Produit> pRack, Monayeur pMonMonnayeur) {
+		this.monMonnayeur = pMonMonnayeur;
+		this.rack = pRack;
+	}
+
+	
+	//GETTERS & SETTERS
+	public Monayeur getMonMonnayeur() {
+		return monMonnayeur;
+	}
+
+	public Stocker<Produit> getRack() {
+		return rack;
+	}
+
+	public void setRack(Stocker<Produit> rack) {
+		this.rack = rack;
+	}
+	public int getMontantInsere() {
+		return montantInsere;
+	}
+
+	public void setMontantInsere(int montantInsere) {
+		this.montantInsere = montantInsere;
+	}
+
+	private void notifierLesChangements() {
+		// je dois prevenir ceux qui me regardent lors d'un changement
+		setChanged();
+		notifyObservers();
+	}
+	
+	
+	//METHODES METIER
+	public void insere(int val) {
+		this.montantInsere += val;
+		notifierLesChangements();
+	}
+	
+	public char getIdChar(String idComplet) {
+		return idComplet.charAt(0);
+	}
+	
+	public void boissonSelectionnee(String boisson){
+		this.boissonSelectionnee = boisson;
+		notifierLesChangements();
+	}
+
+	public String getBoissonSelectionnee() {
+		return boissonSelectionnee;
+	}
+	
+	public String getChoix() {
+		return this.choix;
+	}
+	public void setChoix(String choix) {
+		 this.choix= choix;
+	}
+	
+
+}	
+
+//int montantARendre = (montantInsere - prixBoisson);

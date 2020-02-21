@@ -1,0 +1,58 @@
+import controler.MonControleur;
+import model.Model;
+import model.Monayeur;
+import model.Piece;
+import model.Produit;
+import model.Stocker;
+import view.View;
+
+/**
+ * 
+ */
+
+/**
+ * | @Author : @Fred || 19 févr. 2020 || 14:53:46 | *
+ *
+ */
+public class Lanceur {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Monayeur monMonnayeur = new Monayeur();
+		monMonnayeur.addItem(new Piece("10cts",10));
+		monMonnayeur.addItem(new Piece("20cts",20));
+		monMonnayeur.addItem(new Piece("50cts",50));
+		monMonnayeur.addItem(new Piece("100cts",100));
+		monMonnayeur.addItem(new Piece("200cts",200));
+		
+		
+		System.out.println(monMonnayeur.getItemById(1).getValeur());
+		
+		Stocker<Produit> rack = new Stocker<Produit>();
+		rack.addItem(new Produit("B1","coca", 0,60));
+		rack.addItem(new Produit("B2","sprite", 0,80));
+		
+		System.out.println(rack.getItemById(2).getNom());
+		
+		View f = new View(rack);
+		
+		// declaration d'un modele
+		MonModel modeleDeLApplication = new MonModel();
+		modeleDeLApplication.setMonStock(monStock);
+		
+		// declaration du controleur
+		MonControleur ctrl = new MonControleur(modeleDeLApplication);
+
+		// Présenter le controleur à la vue
+		f.setListener(ctrl);
+
+		// j'ajoute ma fenetre à la liste des observer de mon modele
+		modeleDeLApplication.addObserver(f);
+		
+		f.afficher();
+	}
+
+}

@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package model;
+
+/**
+ * | @Author : @Fred || 20 févr. 2020 || 14:10:15 | *
+ *
+ */
+public enum Pieces {
+
+}

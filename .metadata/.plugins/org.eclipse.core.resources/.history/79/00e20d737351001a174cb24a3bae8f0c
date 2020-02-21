@@ -1,0 +1,33 @@
+/**
+ * 
+ */
+package controller;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import model.MonModel;
+
+/**
+ * | @Author : @Fred || 17 févr. 2020 || 11:45:24 | *
+ *
+ */
+public class MonControleur implements ActionListener {
+	MonModel modele;
+
+public Moncontroleur(MonModel modele) {
+	super();
+	this.modele = modele;
+}
+
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	if (e.getActionCommand()=="menfous") {
+		modele.TraitementBA();
+	}
+	
+	if (e.getActionCommand()=="comprandpo") {
+		modele.TraitementBB();
+	}
+}
+}

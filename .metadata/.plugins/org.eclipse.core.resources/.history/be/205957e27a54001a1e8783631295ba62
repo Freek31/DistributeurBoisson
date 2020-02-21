@@ -1,0 +1,91 @@
+/**
+ * 
+ */
+package model;
+
+import java.util.Observable;
+
+/**
+ * | @Author : @Fred || 20 févr. 2020 || 09:21:30 | *
+ *
+ */
+public class Distributeur extends Observable {
+	//ATTRIBUTS
+	private int montantInsere = 0;
+	private Monayeur monMonnayeur;
+	private Stocker<Produit> rack;
+	private String boissonSelectionnee;
+	/**
+	 * @return the monMonnayeur
+	 */
+	public Monayeur getMonMonnayeur() {
+		return monMonnayeur;
+	}
+
+	/**
+	 * @return the rack
+	 */
+	public Stocker<Produit> getRack() {
+		return rack;
+	}
+
+	/**
+	 * @param rack the rack to set
+	 */
+	public void setRack(Stocker<Produit> rack) {
+		this.rack = rack;
+	}
+
+
+	
+	
+	//CONSTRUCTEUR
+	public Distributeur(Stocker<Produit> pRack, Monayeur pMonMonnayeur) {
+		this.monMonnayeur = pMonMonnayeur;
+		this.rack = pRack;
+	}
+
+	//GETTERS & SETTERS
+	public int getMontantInsere() {
+		return montantInsere;
+	}
+	/**
+	 * @param montantInsere the montantInsere to set
+	 */
+	public void setMontantInsere(int montantInsere) {
+		this.montantInsere = montantInsere;
+	}
+	
+
+	private void notifierLesChangements() {
+		// j'ai fait un traitement, des modifs -> je dois prevenir ceux qui me regardent
+		setChanged();
+		notifyObservers();
+	}
+	
+	//METHODES METIER
+	public void insere(int val) {
+		this.montantInsere += val;
+		notifierLesChangements();
+	}
+	
+	public char getIdChar(String idComplet) {
+		return idComplet.charAt(0);
+	}
+	
+	public void boissonSelectionnee(String boisson){
+		this.setBoissonSelectionnee(boisson);
+		notifierLesChangements();
+	}
+
+	public String getBoissonSelectionnee() {
+		return boissonSelectionnee;
+	}
+
+	public void setBoissonSelectionnee(String boissonSelectionnee) {
+		this.boissonSelectionnee = boissonSelectionnee;
+	} 
+}
+
+
+//int montantARendre = (montantInsere - prixBoisson);

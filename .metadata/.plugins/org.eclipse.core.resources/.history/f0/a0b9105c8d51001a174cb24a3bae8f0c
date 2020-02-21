@@ -1,0 +1,47 @@
+import java.util.*;
+
+import model.Monayeur;
+import model.Phrase;
+import model.Pieces;
+import model.Services;
+/**
+ * | @Author : @Fred || 10 févr. 2020 || 08:42:45 | *
+ */
+
+public class Lanceur {
+	public static void main(String[] args) {
+		
+		//Initialisations
+		short[] stockPieces = { 0, 0, 0, 0, 0 }; 
+		short[] pieceInseree = { 0, 0, 0, 0, 0 };
+		short montantInsere = 0;
+	
+		
+		//**Affichage menu**//
+		/*Menu monMenu= new Menu ("Menu des boissons", Distributeur.collection());
+		monMenu.afficherMenu();*/
+		
+		
+		//Phrase.Affichage("Bonjour! Donner le prix de la boisson :"); 
+		short prixBoisson = Services.VerifShort(); //verification sil sagit dun prix correct
+		
+		//**Affichage insertion des pieces + Calcul du montant inseré + mise a jour du stock**// 
+		do {
+			for (byte i = 0; i < stockPieces.length; i++) {
+				Phrase.Affichage("Donner vos pieces de : " + Pieces.values()[i].getValeurPiece() + "cts "); //peutetre mettre cette partie dans monayeur
+				pieceInseree[i] = Services.VerifShort();
+				montantInsere += pieceInseree[i] * (Pieces.values()[i].getValeurPiece());
+				stockPieces[i] += pieceInseree[i];
+			}
+			if(montantInsere<prixBoisson) {
+				Phrase.Affichage("Pas assez de pieces inserée, veuillez recommencer : \n"); 
+			}
+		}while(montantInsere<prixBoisson);// verification du montant inseré
+		
+		//Calcul de la monnaie a rendre 
+		boolean result = Monayeur.CalculMonnaieARendre(montantInsere, stockPieces, prixBoisson); 
+		if (!result) {
+			Phrase.Affichage("La machine est incapable de rembourser la totalité sur loperation demandé. Veuillez recuperer vos pieces inserées"); // instancier le monayeur??
+		}	
+	}
+}

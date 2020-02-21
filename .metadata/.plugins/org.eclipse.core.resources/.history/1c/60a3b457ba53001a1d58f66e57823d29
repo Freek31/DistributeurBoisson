@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package controler;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+
+/**
+ * | @Author : @Fred || 20 févr. 2020 || 08:08:51 | *
+ *
+ */
+public class MonControleur implements ActionListener {
+
+}

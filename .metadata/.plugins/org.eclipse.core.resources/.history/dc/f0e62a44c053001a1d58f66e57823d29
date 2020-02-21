@@ -1,0 +1,36 @@
+/**
+ * 
+ */
+package model;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * | @Author : @Fred || 19 févr. 2020 || 15:04:33 | *
+ *
+ */
+public class Stocker<T extends Stockable> {
+	protected Map<Integer, T> stock = new HashMap<Integer, T>();
+
+	public T getItemById(Integer id) {
+		return stock.get(id);
+	}
+
+	public void addItem(T item) {
+		stock.put(Integer.parseInt(item.getId()), item);
+	}
+
+	public void removeItem(Integer id) {
+		stock.remove(id);
+	}
+
+	public void removeItem(Stockable item) {
+		stock.remove(Integer.parseInt(item.getId()));
+	}
+
+	public void getsize() {
+		this.stock.size();
+	}
+}
+

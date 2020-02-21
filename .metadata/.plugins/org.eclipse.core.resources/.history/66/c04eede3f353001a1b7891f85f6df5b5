@@ -1,0 +1,38 @@
+/**
+ * 
+ */
+package model;
+
+
+
+/**
+ * | @Author : @Fred || 20 févr. 2020 || 15:35:40 | *
+ *
+ */
+public class Services {
+
+	//Calcule le min de 2 short
+	public static short Min(short a, short b) {
+		short min;
+		if (a < b) {
+			min = a;
+		} else {
+			min = b;
+		}
+		return min;
+	}
+	
+	//Calcule le max de 2 short
+	public static short Max(short a, short b) {
+		short max;
+		if (a > b) {
+			max = a;
+		} else {
+			max = b;
+		}
+		return max;
+	}
+
+	
+}
+

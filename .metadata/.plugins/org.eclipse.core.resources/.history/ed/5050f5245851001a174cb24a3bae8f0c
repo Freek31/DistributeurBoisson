@@ -1,0 +1,27 @@
+
+/**
+ * | @Author : @Fred || 12 févr. 2020 || 14:44:23 | *
+ *
+ */
+public class LanceurProduit {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		StockProduits monStock = new StockProduits();
+		monStock.addNewProduit(new Produit(1,"Coc",60, 5));
+		
+	
+	//	System.out.println(monStock.getBoissonById(2).getProd().getNom());
+		
+		System.out.println(monStock.getBoissonById(1).getStock());
+		
+		
+		
+	
+	}
+
+}

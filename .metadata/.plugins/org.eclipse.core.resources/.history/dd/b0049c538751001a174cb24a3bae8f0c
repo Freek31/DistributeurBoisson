@@ -1,0 +1,118 @@
+/**
+ * 
+ */
+package views;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+import java.util.Observable;
+import java.util.Observer;
+
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.Icon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.Border;
+
+import model.MonModel;
+
+/**
+ * | @Author : @Fred || 17 févr. 2020 || 09:23:24 | *
+ *
+ */
+public class View extends JFrame implements Observer {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+//	private static String nomBtn = "";
+	private JLabel etiquetteDeDonnee;
+	private JButton[] buttons;
+	
+	private JPanel panelNorth = new JPanel();
+	private JTextField zoneTextNorth = new JTextField();
+	
+
+	public View(String[] tabNomsBoisson) {
+		super();
+
+		
+		getContentPane().add(this.panelBandeauBasMsg, Borderlayout.SOUTH);
+		this.panelBandeauBasMsg.add(messageBandeauBas)
+		//on veut afficher un bouton par produit coreespondant
+		buttons = new JButton[tabNomsBoisson.length];
+		for (int i = 0; i <buttons.length; i++) {
+		    this.buttons[i] = new JButton(tabNomsBoisson[i]);
+		    this.buttons[i].setActionCommand(tabNomsBoisson[i]); 
+		}
+		
+
+		Container contenu= getContentPane(); // on cree un objet de tupe container qui prend l'adresse du panneau,
+		contenu.setBackground(Color.GREEN); // /!\ en modifiant contenue on modifie également lobjet jframe
+											// correspondant : on a objet1 =objet2;
+		contenu.setLayout(new FlowLayout()); // container est une collection
+		
+	
+	
+		for (int i = 0; i <buttons.length; i++) {
+		
+		contenu.add(buttons[i]);
+		}
+		etiquetteDeDonnee = new JLabel("");
+		contenu.add(etiquetteDeDonnee);
+		
+		setSize(400, 200);
+	
+	}
+	public void afficher() {
+		setVisible(true);
+	}
+	
+	private void rafraichirAffichage(MonModel leModele) {
+		this.etiquetteDeDonnee.setText(leModele.getMessage());
+	}
+	
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		System.out.println("on me dit dans l oreillette que ca a bouge");
+		rafraichirAffichage((MonModel) o);
+		
+	}
+	
+	public void setListener (ActionListener al) {
+		for (int i = 0; i <buttons.length; i++) {
+			
+			buttons[i].addActionListener(al);
+			}
+		
+		
+	}
+
+	/**
+	 * @return the nomBtn
+	 
+	public static String getNomBtn() {
+		return nomBtn;
+	}
+
+	/**
+	 * @param nomBtn the nomBtn to set
+	 
+	public static void setNomBtn(String pNomBtn) {
+		nomBtn = pNomBtn;
+	}*/
+
+}
