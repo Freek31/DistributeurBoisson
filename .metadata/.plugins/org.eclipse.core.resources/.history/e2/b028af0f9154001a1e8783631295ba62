@@ -106,4 +106,4 @@ public class Distributeur extends Observable {
 
 }	
 
-
+//int montantARendre = (montantInsere - prixBoisson);
