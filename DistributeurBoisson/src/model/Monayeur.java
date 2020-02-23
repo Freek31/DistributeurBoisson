@@ -27,29 +27,29 @@ public class Monayeur extends Stocker<Piece> {
 
 				// On calcule le nombre de pieces a rendre en favorisant les plus grosses pieces
 				for (int nbRendue200 = Services.Min( (100 / Pieces.values()[4].getValeur()),
-						getItemById(4).getQty()); (nbRendue200 >= 0) && (validation == false); nbRendue200--) {
+						getItemById(5).getQty()); (nbRendue200 >= 0) && (validation == false); nbRendue200--) {
 					resteARendre = (int) (montantARendre - (nbRendue200 * Pieces.values()[4].getValeur()));// le reste à rendre, le montant à rendre moins ce que j'ai déja rendu
 
 					for (int nbRendue100 = Services.Min((int) (resteARendre / Pieces.values()[3].getValeur()),
-							stock.get(3).getQty()); nbRendue100 >= 0; nbRendue100--) {
+							stock.get(4).getQty()); nbRendue100 >= 0; nbRendue100--) {
 						resteARendre = (int) (montantARendre - (nbRendue200 * Pieces.values()[4].getValeur()
 								+ nbRendue100 * Pieces.values()[3].getValeur()));
 
 						for (int nbRendue050 = Services.Min((int) (resteARendre / Pieces.values()[2].getValeur()),
-								stock.get(2).getQty()); nbRendue050 >= 0; nbRendue050--) {
+								stock.get(3).getQty()); nbRendue050 >= 0; nbRendue050--) {
 							resteARendre = (int) (montantARendre - (nbRendue050 * Pieces.values()[2].getValeur()
 									+ nbRendue200 * Pieces.values()[4].getValeur()
 									+ nbRendue100 * Pieces.values()[3].getValeur()));
 
 							for (int nbRendue020 = Services.Min((int) (resteARendre / Pieces.values()[1].getValeur()),
-									stock.get(1).getQty()); nbRendue020 >= 0; nbRendue020--) {
+									stock.get(2).getQty()); nbRendue020 >= 0; nbRendue020--) {
 								resteARendre = (int) (montantARendre - (nbRendue050 * Pieces.values()[2].getValeur()
 										+ nbRendue200 * Pieces.values()[4].getValeur()
 										+ nbRendue100 * Pieces.values()[3].getValeur()
 										+ nbRendue020 * Pieces.values()[1].getValeur()));
 
 								for (int nbRendue010 = Services.Min((int) (resteARendre / Pieces.values()[0].getValeur()),
-										stock.get(0).getQty()); nbRendue010 >= 0; nbRendue010--) {
+										stock.get(1).getQty()); nbRendue010 >= 0; nbRendue010--) {
 									resteARendre = (int) (montantARendre - (nbRendue010 * Pieces.values()[0].getValeur()
 											+ nbRendue050 * Pieces.values()[2].getValeur()
 											+ nbRendue200 * Pieces.values()[4].getValeur()

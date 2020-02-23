@@ -125,7 +125,7 @@ public class View extends JFrame implements Observer {
 		} else if (((Distributeur) o).getChoix() == "B") {
 			this.messageBandeauBas.setText("Boisson selectionnée : " + ((Distributeur) o).getBoissonSelectionnee());
 		} else if (((Distributeur) o).getChoix() == "V"){
-			this.messageBandeauBas.setText("Monnaie insere/rendu : " + ((Distributeur) o).getMontantInsere()/ 100f + " € / " + ((Distributeur) o).getMontantARendre());
+			this.messageBandeauBas.setText("Monnaie insere/rendu : " + ((Distributeur) o).getMontantInsere()/ 100f + " € / " + ((Distributeur) o).getMontantARendre()/ 100f + " € ");
 		}
 	}
 
