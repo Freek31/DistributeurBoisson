@@ -4,6 +4,7 @@
 package model;
 
 import java.util.Observable;
+import java.util.Set;
 
 /**
  * | @Author : @Fred || 20 févr. 2020 || 09:21:30 | *
@@ -14,10 +15,14 @@ public class Distributeur extends Observable {
 	private int montantInsere = 0;
 	private int montantARendre = 0;
 	private int prixBoissonSelectionnee=0;
+	
 	private Monayeur monMonnayeur;
 	private Stocker<Produit> rack;
+	private Monayeur monayeurArgenARendre;
+	
 	private String boissonSelectionnee;
 	private String choix;
+	
 	
 
 	//CONSTRUCTEUR
@@ -41,10 +46,6 @@ public class Distributeur extends Observable {
 	}
 	public int getMontantInsere() {
 		return montantInsere;
-	}
-
-	public void setMontantInsere(int montantInsere) {
-		this.montantInsere = montantInsere;
 	}
 	
 	public int getPrixBoissonSelectionnee() {
@@ -99,11 +100,24 @@ public class Distributeur extends Observable {
 	}
 	
 	public Monayeur CalculPiecesARendre() {
+	
+		
 	return (this.monMonnayeur.CalculMonnaieARendre(this.montantARendre));
 	}
 
 	
-
+	/*
+	public void afficherMonnaieARendre() {
+		monayeurArgenARendre = CalculPiecesARendre();
+		Set listKeys=monayeurArgenARendre;  // Obtenir la liste des clés
+		Iterator iterateur=listKeys.iterator();
+		// Parcourir les clés et afficher les entrées de chaque clé;
+		while(iterateur.hasNext())
+		{
+			Object key= iterateur.next();
+			System.out.println (key+"=>"+myMap.get(key));
+		}
+	}*/
 }	
 
 

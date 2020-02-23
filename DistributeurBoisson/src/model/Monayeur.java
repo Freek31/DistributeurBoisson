@@ -16,8 +16,8 @@ import model.Distributeur;
  */
 public class Monayeur extends Stocker<Piece> {
 	
+	private Monayeur argentARendre;
 	
-	private Monayeur ArgentARendre;
 
 	public Monayeur CalculMonnaieARendre(int montantARendre){
 		//Initialisations
@@ -62,12 +62,13 @@ public class Monayeur extends Stocker<Piece> {
 												+ nbRendue100 + " piece(s) de 1euro, " + nbRendue050 + " piece(s) de 50 cts,  "
 												+ nbRendue020 + " piece(s) de 20cts et " + nbRendue010 + " piece(s) de 10 cts");*/
 										validation = true; // Super la machine peut rendre l'argent!
+										this.argentARendre = new Monayeur();
+										argentARendre.addItem(new Piece("Piece(s) de 0.10€", 10, nbRendue010));
+										argentARendre.addItem(new Piece("Piece(s) de 0.20€", 20, nbRendue020));
+										argentARendre.addItem(new Piece("Piece(s) de 0.50€", 50, nbRendue050));
+										argentARendre.addItem(new Piece("Piece(s) de 1€", 100, nbRendue100));
+										argentARendre.addItem(new Piece("Piece(s) de 2€", 200, nbRendue200));
 										
-										this.ArgentARendre.addItem(new Piece("Piece(s) de 0.10€", 10, nbRendue010));
-										this.ArgentARendre.addItem(new Piece("Piece(s) de 0.20€", 20, nbRendue020));
-										this.ArgentARendre.addItem(new Piece("Piece(s) de 0.50€", 50, nbRendue050));
-										this.ArgentARendre.addItem(new Piece("Piece(s) de 1€", 100, nbRendue100));
-										this.ArgentARendre.addItem(new Piece("Piece(s) de 2€", 200, nbRendue200));
 									}
 								}
 
@@ -78,7 +79,8 @@ public class Monayeur extends Stocker<Piece> {
 					}
 
 				}
-				return this.ArgentARendre;
+				return argentARendre;
+				
 				
 
 	}

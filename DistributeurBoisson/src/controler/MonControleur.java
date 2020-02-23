@@ -33,7 +33,8 @@ public class MonControleur implements ActionListener {
 		// 'P*'
 		if (modele.getIdChar(e.getActionCommand()) == 'B') {
 			System.out.println("cest une boisson!");
-			modele.setPrixBoissonSelectionnee(modele.getRack().getItemById(Character.getNumericValue(e.getActionCommand().charAt(1))).getPrix());
+			modele.setPrixBoissonSelectionnee(
+					modele.getRack().getItemById(Character.getNumericValue(e.getActionCommand().charAt(1))).getPrix());
 			modele.boissonSelectionnee(
 					modele.getRack().getItemById(Character.getNumericValue(e.getActionCommand().charAt(1))).getNom());
 			modele.setChoix("B");
@@ -41,11 +42,10 @@ public class MonControleur implements ActionListener {
 			System.out.println("c'est une piece!");
 			modele.insere(Pieces.valueOf(e.getActionCommand()).getValeur());
 			modele.setChoix("P");
-		} else if(e.getActionCommand() == "V"){
+		} else if (e.getActionCommand() == "V") {
 			modele.setChoix("V");
-			modele.setMontantInsere(modele.getMontantInsere());
+			modele.getMontantInsere();
 			modele.setMontantARendre();
-			
 			modele.CalculPiecesARendre();
 		}
 	}
